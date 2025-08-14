@@ -1,0 +1,13 @@
+<h2>Activity</h2>
+<button *ngIf="messageService.messages.length" (click)="messageService.clear()">Clear Activity</button>
+<hr>
+
+<div *ngIf="messageService.messages.length > 0; else noActivities">
+  <div *ngFor="let message of messageService.messages">
+    {{ message }}
+  </div>
+</div>
+
+<ng-template #noActivities>
+  <div class="no-act-placeholder">No Activities Yet.</div>
+</ng-template>

@@ -1,0 +1,9 @@
+<h2>Active Clients:</h2>
+<div class="customers-menu">
+  <a *ngFor="let customer of customers" [routerLink]="['/detail', customer.id]">
+  {{customer.name}}
+</a>
+
+</div>
+
+<!-- <app-customer-search></app-customer-search> -->

@@ -1,0 +1,30 @@
+<h2>My Clients:</h2>
+
+<button class="toggle-add-client" (click)="showAddClient = !showAddClient">
+  {{ showAddClient ? '-' : '+' }}
+</button>
+
+<app-add-client *ngIf="showAddClient" (add)="add($event)"></app-add-client>
+
+
+
+<div class="customers-container">
+  <ul class="customers">
+    <li *ngFor="let customer of customers">
+      <a (click)="selectCustomer(customer)">
+        <span class="badge">{{customer.id}}</span> {{customer.name}}
+      </a>
+      <button class="delete delete-btn" (click)="delete(customer)">
+        <i class="fas fa-trash"></i>
+      </button>
+      <button class="edit" [routerLink]="['/detail', customer.id]">
+        <i class="fas fa-pencil"></i>
+      </button>
+    </li>
+  </ul>
+
+  <app-customer-display 
+    *ngIf="selectedCustomer" 
+    [customer]="selectedCustomer">
+  </app-customer-display>
+</div>
