@@ -48,7 +48,7 @@ export class CustomerService {
   getCustomer(id: number): Observable<Customer> {
     const url = `${this.customersUrl}/${id}`;
     return this.http.get<Customer>(url).pipe(
-      tap(customer => this.log(`Opened Customer Editor: ${customer.name}`)),
+      // tap(customer => this.log(`Opened Customer Editor: ${customer.name}`)),
       catchError(this.handleError<Customer>(`getCustomer id=${id}`))
     );
   }
@@ -119,4 +119,29 @@ updateCustomer(customer: Customer): Observable<any> {
     // this.messageService.add(`CustomerService: ${message}`);
     this.messageService.add(message);
   }
+
+/** GET total number of customers */
+getTotalClients(): Observable<number> {
+  return this.getCustomers().pipe(
+    map(customers => customers.length) // count all customers
+  );
+}
+
+/** GET number of active customers */
+getActiveClients(): Observable<number> {
+  return this.getCustomers().pipe(
+    map(customers => customers.filter(c => c.status === 'Active').length) // count only active
+  );
+}
+
+getLeadClients(): Observable<number> {
+  return this.getCustomers().pipe(
+    map(customers => customers.filter(c => c.status === 'Prospect').length) // count only active
+  );
+}
+
+
+
+
+
 }

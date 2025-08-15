@@ -41,5 +41,7 @@ export class CustomerDetailComponent implements OnInit {
       .subscribe(() => this.goBack()); // no extra log here
   }
 }
-
 }
+
+
+

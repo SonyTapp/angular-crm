@@ -34,4 +34,11 @@
         npx angular-cli-ghpages --dir=dist/angular-crm/browser
 
 
+
+            git add .                  # stage all changes
+            git commit -m "Your message"  # commit with a message
+            git push                   # push to the remote repository
+
 -------------------------------------------------------------------------
+
+
